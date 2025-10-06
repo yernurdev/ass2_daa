@@ -19,9 +19,15 @@ public class PerformanceTracker {
         return (endTime - startTime) / 1_000_000;
     }
 
+    // --- increment methods ---
     public void incComparisons() { comparisons++; }
     public void incSwaps() { swaps++; }
     public void addAccesses(long n) { arrayAccesses += n; }
+
+    // --- getters (нужны для BenchmarkRunner) ---
+    public long getComparisons() { return comparisons; }
+    public long getSwaps() { return swaps; }
+    public long getArrayAccesses() { return arrayAccesses; }
 
     public String toCsvLine(int n) {
         return n + "," + getElapsedMillis() + "," + comparisons + "," + swaps + "," + arrayAccesses;
